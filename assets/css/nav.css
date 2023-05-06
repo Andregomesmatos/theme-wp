@@ -1,0 +1,14 @@
+#menu-menu-topo-site {
+    display: flex;
+    gap: 1rem;
+
+    list-style: none;
+    padding: 0;
+}
+
+#menu-menu-topo-site li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.235rem;
+    font-weight: 500;
+}
