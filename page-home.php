@@ -1,20 +1,42 @@
 <?php get_header(); ?>
 
-<?php
-$imagens = get_field('galeria_de_slide');
+<!-- Section Slide Home -->
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <?php if (have_rows('galeria_slide_home')) : ?>
+                <?php while (have_rows('galeria_slide_home')) : the_row(); ?>
+                    <?php
+                    $imagem = get_sub_field("imagem");
+                    $titulo = get_sub_field("texto_slide");
+                    $link = get_sub_field("link");
+                    ?>
+                    <img src="<?= $imagem; ?>" alt="" class="img-fluid">
+                    <a href="<?= $link; ?>">
+                        <p><?= $titulo; ?></p>
+                    </a>
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </div>
 
-//var_dump($imagens);
-?>
+        <div class="col-12 col-md-3">
+            <h3>A Câmara mais perto de você</h3>
+            <?php $rows = get_field('links_home_Camara_'); ?>
+            <?php if ($rows) : ?>
+                <?php foreach ($rows as $row) : ?>
+                    <a href="<?= $row['link_do_texto']; ?>">
+                        <h2><?= $row['titulo']; ?></h2>
+                        <p><?= $row['texto']; ?></p>
+                    </a>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<!-- Section Slide Home -->
 
-<!--Slide-->
-<?php if (isset($imagens)) : ?>
-    <ul>
-        <?php foreach ($imagens as $image) : ?>
-            <li><img src="<?= $image; ?>" alt=""></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
+<!-- Section Content 1 -->
 
-<!--Condeudo 1-->
+<!-- Section Content 1 / -->
 
 <?php get_footer(); ?>
